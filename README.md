@@ -23,7 +23,7 @@ The system allows investors to view their portfolio details, view products linke
 ## Project Structure
 
 ```txt
-src/main/java/com/enviro/assessment/junior/sthembiso
+src/main/java/com/enviro/assessment/sthembiso
 │
 ├── config
 ├── controller
