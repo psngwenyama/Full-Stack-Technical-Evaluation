@@ -1,6 +1,7 @@
 package com.enviro.assessment.enviro.assessment.sthembiso.controller;
 
 import com.enviro.assessment.enviro.assessment.sthembiso.dto.InvestorDto;
+import com.enviro.assessment.enviro.assessment.sthembiso.dto.InvestorPortfolioDto;
 import com.enviro.assessment.enviro.assessment.sthembiso.entity.Investor;
 import com.enviro.assessment.enviro.assessment.sthembiso.service.InvestorService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +27,13 @@ public class InvestorController {
     }
 
     @GetMapping("/{id}")
-    public InvestorDto getInvestorById(@PathVariable Long id){
-        return investorService.getInvestorById(id);
+    public InvestorPortfolioDto getInvestorById(@PathVariable Long id){
+        return investorService.getInvestorPortfolio(id);
+    }
+
+    @GetMapping("/{id}/portfolio")
+    public InvestorPortfolioDto getInvestorPortfolio(@PathVariable Long id) {
+        return investorService.getInvestorPortfolio(id);
     }
 
 }

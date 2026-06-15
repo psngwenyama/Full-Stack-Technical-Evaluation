@@ -1,8 +1,13 @@
 package com.enviro.assessment.enviro.assessment.sthembiso.service;
 
 import com.enviro.assessment.enviro.assessment.sthembiso.dto.InvestorDto;
+import com.enviro.assessment.enviro.assessment.sthembiso.dto.InvestorPortfolioDto;
+import com.enviro.assessment.enviro.assessment.sthembiso.dto.PortfolioDto;
+import com.enviro.assessment.enviro.assessment.sthembiso.dto.ProductDto;
 import com.enviro.assessment.enviro.assessment.sthembiso.entity.Investor;
+import com.enviro.assessment.enviro.assessment.sthembiso.entity.Portfolio;
 import com.enviro.assessment.enviro.assessment.sthembiso.repository.InvestorRepository;
+import com.enviro.assessment.enviro.assessment.sthembiso.repository.PortfolioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +17,14 @@ import java.util.stream.Collectors;
 public class InvestorService {
 
     private final InvestorRepository investorRepository;
+    private final PortfolioRepository portfolioRepository;
 
-    public InvestorService(InvestorRepository investorRepository){
+    public InvestorService(InvestorRepository investorRepository,
+                           PortfolioRepository portfolioRepository
+    )
+    {
         this.investorRepository = investorRepository;
+        this.portfolioRepository = portfolioRepository;
     }
 
     public List<InvestorDto> getAllInvestors(){
@@ -29,16 +39,33 @@ public class InvestorService {
                 .collect(Collectors.toList());
     }
 
-    public InvestorDto getInvestorById(Long id){
-        Investor investor = investorRepository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Investor not found"));
-        return new InvestorDto(
+    public InvestorPortfolioDto getInvestorPortfolio(Long investorId) {
+
+        Investor investor = investorRepository.findById(investorId)
+                .orElseThrow(() -> new RuntimeException("Investor not found"));
+
+        List<Portfolio> portfolios = portfolioRepository.findByInvestorId(investorId);
+
+        List<PortfolioDto> portfolioDtos = portfolios.stream()
+                .map(portfolio -> new PortfolioDto(
+                        portfolio.getId(),
+                        portfolio.getPortfolioName(),
+                        portfolio.getBalance(),
+                        portfolio.getProducts().stream()
+                                .map(product -> new ProductDto(
+                                        product.getPortfolio().getId(),
+                                        product.getProductName(),
+                                        product.getProductType(),
+                                        product.getBalance()
+                                ))
+                                .toList()
+                ))
+                .toList();
+
+        return new InvestorPortfolioDto(
                 investor.getId(),
-                investor.getFirstName(),
-                investor.getLastName(),
-                investor.getEmail()
+                investor.getFirstName() + " " + investor.getLastName(),
+                portfolioDtos
         );
     }
-
 }
