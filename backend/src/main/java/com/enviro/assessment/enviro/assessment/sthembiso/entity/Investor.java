@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "investors")
 public class Investor {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,20 +19,19 @@ public class Investor {
     @Column(unique = true, nullable = false)
     private String email;
 
-    private LocalDate dateofBirth;
+    private LocalDate dateOfBirth;
 
     @OneToMany(mappedBy = "investor")
     private List<Portfolio> portfolios;
 
-    public Investor(){
-
+    public Investor() {
     }
 
-    public Investor(String firstName, String lastName, String email, LocalDate dateofBirth) {
+    public Investor(String firstName, String lastName, String email, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.dateofBirth = dateofBirth;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Long getId() {
@@ -42,36 +42,36 @@ public class Investor {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public LocalDate getDateofBirth() {
-        return dateofBirth;
-    }
-
-    public List<Portfolio> getPortfolios() {
-        return portfolios;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setDateofBirth(LocalDate dateofBirth) {
-        this.dateofBirth = dateofBirth;
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public List<Portfolio> getPortfolios() {
+        return portfolios;
     }
 
     public void setPortfolios(List<Portfolio> portfolios) {
