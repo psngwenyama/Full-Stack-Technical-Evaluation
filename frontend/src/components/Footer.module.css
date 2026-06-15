@@ -1,0 +1,29 @@
+.footer {
+  width: 100%;
+  background: white;
+  border-top: 4px solid #00aeef;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.author {
+  color: #00aeef;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
