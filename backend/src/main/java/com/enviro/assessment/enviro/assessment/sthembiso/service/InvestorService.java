@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class InvestorService {
 
-    private InvestorRepository investorRepository;
+    private final InvestorRepository investorRepository;
 
     public InvestorService(InvestorRepository investorRepository){
         this.investorRepository = investorRepository;
@@ -17,6 +17,11 @@ public class InvestorService {
 
     public List<Investor> getAllInvestors(){
         return investorRepository.findAll();
+    }
+
+    public Investor getInvestorById(Long id){
+        return investorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Investor not found"));
     }
 
 }
