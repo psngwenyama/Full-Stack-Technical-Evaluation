@@ -3,6 +3,7 @@ package com.enviro.assessment.enviro.assessment.sthembiso.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "investors")
@@ -18,6 +19,9 @@ public class Investor {
     private String email;
 
     private LocalDate dateofBirth;
+
+    @OneToMany(mappedBy = "investor")
+    private List<Portfolio> portfolios;
 
     public Investor(){
 
@@ -50,6 +54,10 @@ public class Investor {
         return dateofBirth;
     }
 
+    public List<Portfolio> getPortfolios() {
+        return portfolios;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -64,5 +72,9 @@ public class Investor {
 
     public void setDateofBirth(LocalDate dateofBirth) {
         this.dateofBirth = dateofBirth;
+    }
+
+    public void setPortfolios(List<Portfolio> portfolios) {
+        this.portfolios = portfolios;
     }
 }
