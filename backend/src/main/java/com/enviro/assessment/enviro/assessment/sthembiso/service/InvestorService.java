@@ -6,6 +6,7 @@ import com.enviro.assessment.enviro.assessment.sthembiso.dto.PortfolioDto;
 import com.enviro.assessment.enviro.assessment.sthembiso.dto.ProductDto;
 import com.enviro.assessment.enviro.assessment.sthembiso.entity.Investor;
 import com.enviro.assessment.enviro.assessment.sthembiso.entity.Portfolio;
+import com.enviro.assessment.enviro.assessment.sthembiso.exception.ResourceNotFoundException;
 import com.enviro.assessment.enviro.assessment.sthembiso.repository.InvestorRepository;
 import com.enviro.assessment.enviro.assessment.sthembiso.repository.PortfolioRepository;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class InvestorService {
     public InvestorPortfolioDto getInvestorPortfolio(Long investorId) {
 
         Investor investor = investorRepository.findById(investorId)
-                .orElseThrow(() -> new RuntimeException("Investor not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Investor not found"));
 
         List<Portfolio> portfolios = portfolioRepository.findByInvestorId(investorId);
 

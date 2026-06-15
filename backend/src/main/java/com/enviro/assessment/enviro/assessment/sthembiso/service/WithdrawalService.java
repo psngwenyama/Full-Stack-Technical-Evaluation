@@ -8,6 +8,8 @@ import com.enviro.assessment.enviro.assessment.sthembiso.entity.Product;
 import com.enviro.assessment.enviro.assessment.sthembiso.entity.WithdrawalNotice;
 import com.enviro.assessment.enviro.assessment.sthembiso.enums.ProductType;
 import com.enviro.assessment.enviro.assessment.sthembiso.enums.WithdrawalStatus;
+import com.enviro.assessment.enviro.assessment.sthembiso.exception.BusinessRuleException;
+import com.enviro.assessment.enviro.assessment.sthembiso.exception.ResourceNotFoundException;
 import com.enviro.assessment.enviro.assessment.sthembiso.repository.InvestorRepository;
 import com.enviro.assessment.enviro.assessment.sthembiso.repository.PortfolioRepository;
 import com.enviro.assessment.enviro.assessment.sthembiso.repository.ProductRepository;
@@ -43,13 +45,13 @@ public class WithdrawalService {
 
     public WithdrawalResponseDto createWithdrawal(WithdrawalRequestDto request) {
         Investor investor = investorRepository.findById(request.getInvestorId())
-                .orElseThrow(() -> new RuntimeException("Investor not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Investor not found"));
 
         Portfolio portfolio = portfolioRepository.findById(request.getPortfolioId())
-                .orElseThrow(() -> new RuntimeException("Portfolio not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Portfolio not found"));
 
         Product product = productRepository.findById(request.getProductId())
-                .orElseThrow(() -> new RuntimeException("Product not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
 
         validateWithdrawalRules(investor, product, request.getAmount());
 
@@ -132,20 +134,20 @@ public class WithdrawalService {
             int age = Period.between(investor.getDateOfBirth(), LocalDate.now()).getYears();
 
             if (age <= 65) {
-                throw new RuntimeException(
+                throw new BusinessRuleException(
                         "Retirement withdrawals are only allowed if investor age is greater than 65"
                 );
             }
         }
 
         if (amount.compareTo(product.getBalance()) > 0) {
-            throw new RuntimeException("Withdrawal amount cannot exceed product balance");
+            throw new BusinessRuleException("Withdrawal amount cannot exceed product balance");
         }
 
         BigDecimal ninetyPercent = product.getBalance().multiply(new BigDecimal("0.90"));
 
         if (amount.compareTo(ninetyPercent) > 0) {
-            throw new RuntimeException("Withdrawal amount cannot exceed 90% of product balance");
+            throw new BusinessRuleException("Withdrawal amount cannot exceed 90% of product balance");
         }
     }
 
