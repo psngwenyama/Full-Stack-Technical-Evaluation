@@ -1,0 +1,26 @@
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.name {
+  margin-bottom: 8px;
+  color: #123524;
+}
+
+.email {
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.link {
+  display: inline-block;
+  background: #123524;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+}
