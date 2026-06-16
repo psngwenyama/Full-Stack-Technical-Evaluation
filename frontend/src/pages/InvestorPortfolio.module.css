@@ -1,0 +1,127 @@
+.container {
+  width: 100%;
+  min-height: calc(100vh - 90px);
+  padding: 40px;
+  background: #f5f8fb;
+  box-sizing: border-box;
+}
+
+.loading {
+  text-align: center;
+  font-size: 24px;
+  padding: 50px;
+  color: #00aeef;
+}
+
+.header {
+  width: 100%;
+  margin-bottom: 32px;
+  background: white;
+  padding: 28px;
+  border-radius: 18px;
+  border-left: 6px solid #00aeef;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.header h1 {
+  color: #1f2937;
+  margin-bottom: 8px;
+  font-size: 36px;
+}
+
+.header p {
+  color: #64748b;
+  padding-top: 8px;
+}
+
+.portfolioCard {
+  width: 100%;
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 28px;
+  border-top: 5px solid #00aeef;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.portfolioHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.portfolioHeader h2 {
+  color: #1f2937;
+  margin: 0;
+}
+
+.balance {
+  background: #00aeef;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.productCard {
+  border: 1px solid #dbe4ea;
+  border-radius: 16px;
+  padding: 24px;
+  background: #f8fcff;
+  transition: all 0.3s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 174, 239, 0.15);
+}
+
+.productCard h3 {
+  color: #00aeef;
+  margin-bottom: 14px;
+}
+
+.productCard p {
+  margin-bottom: 8px;
+  color: #334155;
+}
+
+.productType {
+  display: inline-block;
+  background: #edf9e4;
+  color: #4f8f1f;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .portfolioHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .productsGrid {
+    grid-template-columns: 1fr;
+  }
+}
