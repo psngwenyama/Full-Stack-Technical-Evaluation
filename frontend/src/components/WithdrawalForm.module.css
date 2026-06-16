@@ -1,0 +1,108 @@
+.form {
+  width: 100%;
+  background: white;
+  padding: 28px;
+  border-radius: 18px;
+  margin-bottom: 32px;
+  border-top: 5px solid #00aeef;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.formHeader {
+  margin-bottom: 22px;
+}
+
+.form h2 {
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.formHeader p {
+  color: #64748b;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.field {
+  width: 100%;
+}
+
+.form label {
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #dbe4ea;
+  border-radius: 12px;
+  font-size: 14px;
+  background: white;
+  color: #1f2937;
+}
+
+.form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: #00aeef;
+  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.12);
+}
+
+.form button {
+  margin-top: 22px;
+  background: #00aeef;
+  color: white;
+  border: none;
+  padding: 13px 22px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background: #0094d0;
+}
+
+.message {
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+.success {
+  background: #edf9e4;
+  color: #4f8f1f;
+}
+
+.error {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+@media (max-width: 768px) {
+  .form {
+    padding: 20px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
