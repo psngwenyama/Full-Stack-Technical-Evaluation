@@ -87,14 +87,14 @@ public class DataSeeder {
                     "Savings Product",
                     ProductType.SAVINGS,
                     new BigDecimal("50000.00"),
-                    portfolio1
+                    portfolio3
             );
 
             Product product4 = new Product(
                     "Investment Product",
                     ProductType.INVESTMENT,
                     new BigDecimal("75000.00"),
-                    portfolio2
+                    portfolio4
             );
 
             productRepository.save(product1);
