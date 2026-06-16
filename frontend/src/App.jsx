@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 
 import Dashboard from "./pages/Dashboard";
 import InvestorPortfolio from "./pages/InvestorPortfolio";
+import Withdrawals from "./pages/Withdrawals";
 
 import "./App.css";
 
@@ -14,7 +15,8 @@ function App() {
       <Navbar />
        <Routes>
               <Route path="/" element={<Dashboard />} />
-               <Route path="/investor/:id" element={<InvestorPortfolio />} />
+              <Route path="/investor/:id" element={<InvestorPortfolio />} />
+              <Route path="/withdrawals" element={<Withdrawals />} />
        </Routes>
 
       <Footer />

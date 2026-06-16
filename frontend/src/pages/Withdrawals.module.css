@@ -1,0 +1,116 @@
+.container {
+  width: 100%;
+  min-height: calc(100vh - 90px);
+  padding: 40px;
+  background: #f5f8fb;
+  box-sizing: border-box;
+
+}
+
+.header {
+  width: 100%;
+  margin-bottom: 32px;
+  background: white;
+  padding: 28px;
+  border-radius: 18px;
+  border-left: 6px solid #00aeef;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.header h1 {
+  color: #1f2937;
+  margin-bottom: 8px;
+  font-size: 36px;
+}
+
+.header p {
+  color: #64748b;
+}
+
+.section {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.historyHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  border-left: 6px solid #8dc63f;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.historyHeader h2 {
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.historyHeader p {
+  color: #64748b;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.actions select,
+.actions button {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #dbe4ea;
+  font-weight: 700;
+}
+
+.actions select {
+  background: white;
+  color: #1f2937;
+}
+
+.actions button {
+  background: #8dc63f;
+  color: white;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background: #7db632;
+}
+
+.loading {
+  padding: 50px;
+  text-align: center;
+  color: #00aeef;
+  font-size: 22px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .historyHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .actions select,
+  .actions button {
+    width: 100%;
+  }
+}
